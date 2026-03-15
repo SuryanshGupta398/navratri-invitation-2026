@@ -728,6 +728,138 @@
             .hero-badge { font-size: 0.7rem; padding: 0.35rem 0.8rem; }
             #enter-btn { padding: 0.7rem 1.4rem; font-size: 0.72rem; }
         }
+
+        /* ════════════════════════════════════════
+           DRESS CODE SECTION
+        ════════════════════════════════════════ */
+        .dresscode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: clamp(1rem, 3vw, 1.6rem);
+            margin-top: 2.5rem;
+        }
+        .dresscode-card {
+            background: linear-gradient(145deg, rgba(90,0,0,0.6), rgba(30,0,0,0.8));
+            border: 1.5px solid rgba(212,160,23,0.45);
+            border-radius: 20px 6px 20px 6px;
+            padding: clamp(1.2rem, 3vw, 1.8rem) clamp(0.8rem, 2vw, 1.2rem);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .dresscode-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4a017, transparent);
+        }
+        .dresscode-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(212,160,23,0.2);
+        }
+        .dresscode-swatch {
+            width: clamp(52px, 12vw, 68px);
+            height: clamp(52px, 12vw, 68px);
+            border-radius: 50%;
+            margin: 0 auto 0.9rem;
+            border: 3px solid rgba(255,255,255,0.15);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4), inset 0 0 12px rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+        }
+        .dresscode-name {
+            font-family: "Cinzel", serif;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            font-weight: 700;
+            color: #ffe566;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.3rem;
+        }
+        .dresscode-desc {
+            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+            color: rgba(255,230,150,0.65);
+            line-height: 1.5;
+        }
+        .dresscode-note {
+            margin: 2rem auto 0;
+            background: rgba(212,160,23,0.08);
+            border: 1px dashed rgba(212,160,23,0.4);
+            border-radius: 16px;
+            padding: clamp(1rem, 3vw, 1.4rem) clamp(1rem, 4vw, 2rem);
+            font-size: clamp(0.82rem, 2vw, 1rem);
+            color: rgba(255,230,150,0.8);
+            line-height: 1.8;
+            max-width: 680px;
+        }
+        /* ════════════════════════════════════════
+           PHOTO GALLERY SECTION
+        ════════════════════════════════════════ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(160px, 42vw), 1fr));
+            gap: clamp(0.6rem, 2vw, 1rem);
+            margin-top: 2.5rem;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(212,160,23,0.3);
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(145deg, #3a0000, #1a0000);
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.04);
+            border-color: #d4a017;
+            box-shadow: 0 8px 30px rgba(212,160,23,0.4);
+            z-index: 2;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-placeholder {
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 0.5rem;
+            color: rgba(212,160,23,0.4);
+            font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+            letter-spacing: 1px; text-align: center; padding: 0.5rem;
+        }
+        .gallery-placeholder .ph-icon { font-size: clamp(1.8rem, 5vw, 2.8rem); opacity: 0.35; }
+        #lightbox {
+            display: none; position: fixed; inset: 0; z-index: 8000;
+            background: rgba(0,0,0,0.92);
+            align-items: center; justify-content: center; padding: 1rem;
+        }
+        #lightbox.open { display: flex; }
+        #lightbox img {
+            max-width: 95vw; max-height: 90vh;
+            border-radius: 16px;
+            border: 2px solid rgba(212,160,23,0.5);
+            box-shadow: 0 0 60px rgba(212,160,23,0.3);
+            object-fit: contain;
+        }
+        #lightbox-close {
+            position: absolute;
+            top: clamp(0.8rem,3vw,1.4rem); right: clamp(0.8rem,3vw,1.4rem);
+            background: rgba(139,0,0,0.8);
+            border: 1.5px solid rgba(212,160,23,0.6);
+            color: #ffe566; font-size: 1.4rem;
+            width: 2.6rem; height: 2.6rem; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        #lightbox-close:hover { background: rgba(200,0,0,0.9); }
     </style>
 </head>
 
@@ -758,7 +890,7 @@
             <div class="mata-frame-outer">
                 <div class="lotus-ring" aria-hidden="true"></div>
                 <div class="mata-frame" id="mata-frame">
-                    <img src="pngtree-happy-navaratri-dashahra-maa-durga-navratri-mata-rani-beautiful-face-high-png-image_20534885.png"
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Durga_Painting.jpg/400px-Durga_Painting.jpg"
                         alt="Maa Durga"
                         onerror="this.parentElement.innerHTML='<div class=\'mata-emoji-bg\'>🙏<br>🌺</div>'" />
                 </div>
@@ -803,6 +935,44 @@
             </div>
         </div>
 
+        <!-- DRESS CODE -->
+        <div class="section-wrap" style="background:rgba(255,255,255,0.012);">
+            <h2 class="section-title">👗 Dress Code 👗</h2>
+            <div class="gold-divider"></div>
+            <div class="dresscode-grid" style="max-width:860px;margin-left:auto;margin-right:auto;">
+                <div class="dresscode-card">
+                    <div class="dresscode-swatch" style="background:radial-gradient(circle, #ff4500, #8b0000);">🔴</div>
+                    <div class="dresscode-name">Red</div>
+                    <div class="dresscode-desc">Laal — Shakti ka rang, Mata ka priya rang</div>
+                </div>
+                <!-- <div class="dresscode-card">
+                    <div class="dresscode-swatch" style="background:radial-gradient(circle, #ff8c00, #b35900);">🟠</div>
+                    <div class="dresscode-name">Saffron</div>
+                    <div class="dresscode-desc">Kesariya — Pavitrata aur bhakti ka pratik</div>
+                </div>
+                <div class="dresscode-card">
+                    <div class="dresscode-swatch" style="background:radial-gradient(circle, #ffe566, #c8a000);">🟡</div>
+                    <div class="dresscode-name">Yellow</div>
+                    <div class="dresscode-desc">Peela — Navratri ke shubh rang</div>
+                </div>
+                <div class="dresscode-card">
+                    <div class="dresscode-swatch" style="background:radial-gradient(circle, #228b22, #0a3d0a);">🟢</div>
+                    <div class="dresscode-name">Green</div>
+                    <div class="dresscode-desc">Hara — Samridhi aur utsav ka rang</div>
+                </div>
+                <div class="dresscode-card">
+                    <div class="dresscode-swatch" style="background:radial-gradient(circle, #ff69b4, #8b0050);">🩷</div>
+                    <div class="dresscode-name">Pink</div>
+                    <div class="dresscode-desc">Gulabi — Shringar aur komalata</div>
+                </div> -->
+            </div>
+            <div class="dresscode-note">
+                🙏 <strong style="color:#ffe566;">Ladies:</strong> Saree, Salwar Suit, Lehenga ya koi bhi Indian wear<br>
+                🙏 <strong style="color:#ffe566;">Gents:</strong> Kurta Pajama, Dhoti Kurta ya Indian attire<br>
+                ✨ Kindly avoid dark or western clothing out of respect for the divine occasion
+            </div>
+        </div>
+
         <!-- PROGRAM SCHEDULE -->
         <div class="section-wrap" style="background:rgba(255,255,255,0.015);">
             <h2 class="section-title">🎶 Anhad Ki Mahak 🎶</h2>
@@ -833,6 +1003,43 @@
                     <small>Mangal Aarti &amp; Prasad</small>
                 </div>
             </div>
+        </div>
+
+        <!-- PHOTO GALLERY -->
+        <div class="section-wrap">
+            <h2 class="section-title">📸 Jhalkiyaan 📸</h2>
+            <div class="gold-divider"></div>
+            <p style="margin-top:1.2rem;font-size:clamp(0.85rem,2.5vw,1.05rem);color:rgba(255,220,150,0.6);letter-spacing:1.5px;">Pichle Varshon Ki Pavitra Smritiyan</p>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Photo slots — replace src with your images -->
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-placeholder"><span class="ph-icon">🪔</span>Photo 1</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-placeholder"><span class="ph-icon">🌺</span>Photo 2</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-placeholder"><span class="ph-icon">🙏</span>Photo 3</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-placeholder"><span class="ph-icon">🎵</span>Photo 4</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-placeholder"><span class="ph-icon">🌸</span>Photo 5</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-placeholder"><span class="ph-icon">✨</span>Photo 6</div>
+                </div>
+            </div>
+            <p style="margin-top:1.5rem;font-size:clamp(0.72rem,1.8vw,0.88rem);color:rgba(255,210,100,0.4);font-style:italic;letter-spacing:1px;">
+                * Share your photos with us to be featured here 🌺
+            </p>
+        </div>
+
+        <!-- LIGHTBOX -->
+        <div id="lightbox" onclick="closeLightbox()">
+            <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+            <img id="lightbox-img" src="" alt="Gallery Photo" />
         </div>
 
         <!-- COUNTDOWN -->
@@ -994,6 +1201,23 @@
                 const initDrops = isMobile ? 4 : 8;
                 for (let i = 0; i < initDrops; i++) setTimeout(drop, i * 250);
             }
+
+            /* ─── LIGHTBOX ─── */
+            window.openLightbox = function(item) {
+                const img = item.querySelector('img');
+                if (!img) return; // placeholder tiles — no image yet
+                const lb = document.getElementById('lightbox');
+                document.getElementById('lightbox-img').src = img.src;
+                lb.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            };
+            window.closeLightbox = function() {
+                document.getElementById('lightbox').classList.remove('open');
+                document.body.style.overflow = '';
+            };
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') window.closeLightbox();
+            });
         })();
     </script>
 </body>
